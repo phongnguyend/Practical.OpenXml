@@ -1,1 +1,6 @@
-# Practical.OpenXml
+- [Creating basic Excel workbook with Open XML - CodeProject](https://www.codeproject.com/Articles/371203/Creating-basic-Excel-workbook-with-Open-XML)
+- [How to Create Large Excel File using Openxml - CodeProject](https://www.codeproject.com/Articles/877791/How-to-Create-Large-Excel-File-using-Openxml)
+- [Export very large data to Excel file - CodeProject](https://www.codeproject.com/Tips/659666/Export-very-large-data-to-Excel-file)
+- [How to properly use OpenXmlWriter to write large Excel files – Polymath Programmer](http://polymathprogrammer.com/2012/08/06/how-to-properly-use-openxmlwriter-to-write-large-excel-files/)
+- [c# - Efficiently generate a very large Excel file in .NET? - Stack Overflow](https://stackoverflow.com/questions/25818379/efficiently-generate-a-very-large-excel-file-in-net)
+- [How to create a stylesheet in Excel Open XML – Polymath Programmer](http://polymathprogrammer.com/2009/11/09/how-to-create-stylesheet-in-excel-open-xml/)
