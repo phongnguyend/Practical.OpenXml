@@ -3,12 +3,14 @@
     public static class ExcelConverter
     {
         private static readonly Dictionary<string, int> _columnNames = new Dictionary<string, int>();
+        private static readonly Dictionary<int, string> _columnIndexs = new Dictionary<int, string>();
 
         static ExcelConverter()
         {
-            _columnNames = Enumerable.Range(1, 1000).
-                Select(x => new { Index = x, Name = GetExcelColumnName(x) })
-                .ToDictionary(x => x.Name, x => x.Index);
+            var range = Enumerable.Range(1, 1000).
+                Select(x => new { Index = x, Name = GetExcelColumnName(x) });
+            _columnNames = range.ToDictionary(x => x.Name, x => x.Index);
+            _columnIndexs = range.ToDictionary(x => x.Index, x => x.Name);
         }
 
         private static string GetExcelColumnName(int columnNumber)
@@ -25,14 +27,14 @@
             return columnName;
         }
 
-        public static Dictionary<string, int> ColumNameToIndexMappings()
-        {
-            return _columnNames;
-        }
-
-        public static int ColumNameToIndex(string columnName)
+        public static int ColumnNameToIndex(string columnName)
         {
             return _columnNames[columnName] - 1;
+        }
+
+        public static string ColumnIndexToName(int columnIndex)
+        {
+            return _columnIndexs[columnIndex + 1];
         }
     }
 }
