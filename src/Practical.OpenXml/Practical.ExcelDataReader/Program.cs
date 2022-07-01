@@ -126,18 +126,18 @@ namespace Practical.ExcelDataReader
             return totalBytesOfMemoryUsed.ToString("N0");
         }
 
-        private static IEnumerable<ExcelCell> FindHeaderRow(IExcelDataReader excelDataReader, IEnumerable<string> headerNames, ref int rowIndex, int? fixedHeaderRowNumber = null)
+        private static IEnumerable<ExcelCell> FindHeaderRow(IExcelDataReader reader, IEnumerable<string> headerNames, ref int rowIndex, int? fixedHeaderRowNumber = null)
         {
-            var mergeCells = excelDataReader.MergeCells;
+            var mergeCells = reader.MergeCells;
             var mergedHeaders = new List<ExcelCell>();
 
-            while (excelDataReader.Read())
+            while (reader.Read())
             {
                 var headers = new List<ExcelCell>();
-                for (int columnIndex = 0; columnIndex < excelDataReader.FieldCount; columnIndex++)
+                for (int columnIndex = 0; columnIndex < reader.FieldCount; columnIndex++)
                 {
-                    var headerValue = excelDataReader.GetValue(columnIndex)?.ToString();
-                    var header = new ExcelCell { Value = headerValue, RowIndex = rowIndex, ColumnIndex = columnIndex, SheetName = excelDataReader.Name, Address = $"{ExcelConverter.ColumnIndexToName(columnIndex)}{rowIndex + 1}" };
+                    var headerValue = reader.GetValue(columnIndex)?.ToString();
+                    var header = new ExcelCell { Value = headerValue, RowIndex = rowIndex, ColumnIndex = columnIndex, SheetName = reader.Name, Address = $"{ExcelConverter.ColumnIndexToName(columnIndex)}{rowIndex + 1}" };
                     headers.Add(header);
                     var tempRowIndex = rowIndex;
                     if (mergeCells != null && mergeCells.Any(c => c.FromRow == tempRowIndex && c.FromColumn == columnIndex))
