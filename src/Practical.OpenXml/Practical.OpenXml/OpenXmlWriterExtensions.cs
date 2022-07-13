@@ -1,6 +1,7 @@
 ﻿using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
+using System;
 using System.Collections.Generic;
 
 namespace Practical.OpenXml
@@ -60,18 +61,15 @@ namespace Practical.OpenXml
             writer.WriteEndElement();
         }
 
-        public static void WriteDateCellValue(this OpenXmlWriter writer, string cellValue, List<OpenXmlAttribute> attributes = null)
+        public static void WriteDateCellValue(this OpenXmlWriter writer, DateTime? cellValue, List<OpenXmlAttribute> attributes = null)
         {
             if (attributes == null)
             {
-                writer.WriteStartElement(new Cell() { DataType = CellValues.Number });
-            }
-            else
-            {
-                writer.WriteStartElement(new Cell() { DataType = CellValues.Number }, attributes);
+                attributes = new List<OpenXmlAttribute>();
             }
 
-            writer.WriteElement(new CellValue(cellValue));
+            writer.WriteStartElement(new Cell(), attributes);
+            writer.WriteElement(cellValue.HasValue ? new CellValue(cellValue.Value.ToOADate().ToString()) : new CellValue());
             writer.WriteEndElement();
         }
 
@@ -85,6 +83,18 @@ namespace Practical.OpenXml
             attributes.Add(new OpenXmlAttribute("t", null, "b")); // boolean type
             writer.WriteStartElement(new Cell(), attributes);
             writer.WriteElement(new CellValue(cellValue == "True" ? "1" : "0"));
+            writer.WriteEndElement();
+        }
+
+        public static void WriteDecimalCellValue(this OpenXmlWriter writer, decimal? cellValue, List<OpenXmlAttribute> attributes = null)
+        {
+            if (attributes == null)
+            {
+                attributes = new List<OpenXmlAttribute>();
+            }
+
+            writer.WriteStartElement(new Cell(), attributes);
+            writer.WriteElement(cellValue.HasValue? new CellValue(cellValue.Value): new CellValue());
             writer.WriteEndElement();
         }
     }

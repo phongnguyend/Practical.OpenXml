@@ -19,7 +19,7 @@ namespace Practical.OpenXml
                 File.Delete(fileName);
             }
 
-            var headerList = new string[] { "Header 1", "Header 2", "Header 3", "Header 4" };
+            var headerList = new string[] { "Header 1", "Header 2", "Header 3", "Header 4", "Decimal Column", "DateTime Column" };
 
             var stopWatch = new Stopwatch();
 
@@ -30,6 +30,9 @@ namespace Practical.OpenXml
 
                 SaveCustomStylesheet(workbookPart);
 
+                var dateTimeCellFormatIndex = 1;
+                var decimalCellFormatIndex = 2;
+                var headerCellFormatIndex = 3;
 
                 var workbook = workbookPart.Workbook = new Workbook();
                 var sheets = workbook.AppendChild(new Sheets());
@@ -51,10 +54,7 @@ namespace Practical.OpenXml
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        a[i, j] = new string(
-                            Enumerable.Repeat(chars, 5)
-                                        .Select(s => s[random.Next(s.Length)])
-                                        .ToArray());
+                        a[i, j] = new string(Enumerable.Repeat(chars, 5).Select(s => s[random.Next(s.Length)]).ToArray());
                     }
                 }
 
@@ -71,9 +71,9 @@ namespace Practical.OpenXml
                     writer.WriteStartElement(new Row());
                     for (int i = 0; i < headerList.Length; i++)
                     {
-                        //header formatting attribute.  This will create a <c> element with s=2 as its attribute
+                        //header formatting attribute. This will create a <c> element with s=3 as its attribute
                         //s stands for styleindex
-                        var attributes = new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, "2") }.ToList();
+                        var attributes = new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, $"{headerCellFormatIndex}") }.ToList();
                         writer.WriteSharedStringCellValue(headerList[i], sharedStringData, attributes);
 
                     }
@@ -85,6 +85,17 @@ namespace Practical.OpenXml
                         for (int j = 0; j < 4; j++)
                         {
                             writer.WriteInlineStringCellValue(a[i, j]);
+                        }
+
+                        if (i % 5 == 0)
+                        {
+                            writer.WriteDecimalCellValue(1000.01m, new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, $"{decimalCellFormatIndex}") }.ToList());
+                            writer.WriteDateCellValue(null, new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, $"{dateTimeCellFormatIndex}") }.ToList());
+                        }
+                        else
+                        {
+                            writer.WriteDecimalCellValue(null, new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, $"{decimalCellFormatIndex}") }.ToList());
+                            writer.WriteDateCellValue(DateTime.Now, new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, $"{dateTimeCellFormatIndex}") }.ToList());
                         }
 
                         writer.WriteEndElement(); //end of Row tag
@@ -108,39 +119,39 @@ namespace Practical.OpenXml
 
         private static Stylesheet CreateDefaultStylesheet()
         {
-            var ss = new Stylesheet();
+            var stylesheet = new Stylesheet();
 
-            var fts = new Fonts();
-            var ft = new Font();
-            var ftn = new FontName
+            var fonts = new Fonts();
+            var font = new Font();
+            var fontName = new FontName
             {
                 Val = "Calibri"
             };
-            var ftsz = new FontSize
+            var fontSize = new FontSize
             {
                 Val = 11
             };
-            ft.FontName = ftn;
-            ft.FontSize = ftsz;
-            fts.Append(ft);
-            fts.Count = (uint)fts.ChildElements.Count;
+            font.FontName = fontName;
+            font.FontSize = fontSize;
+            fonts.Append(font);
+            fonts.Count = (uint)fonts.ChildElements.Count;
 
-            ft = new Font
+            font = new Font
             {
                 Bold = new Bold()
             };
-            ftn = new FontName
+            fontName = new FontName
             {
                 Val = "Calibri"
             };
-            ftsz = new FontSize
+            fontSize = new FontSize
             {
                 Val = 11
             };
-            ft.FontName = ftn;
-            ft.FontSize = ftsz;
-            fts.Append(ft);
-            fts.Count = (uint)fts.ChildElements.Count;
+            font.FontName = fontName;
+            font.FontSize = fontSize;
+            fonts.Append(font);
+            fonts.Count = (uint)fonts.ChildElements.Count;
 
             var fills = new Fills();
             var fill = new Fill();
@@ -174,21 +185,21 @@ namespace Practical.OpenXml
             borders.Append(border);
             borders.Count = (uint)borders.ChildElements.Count;
 
-            var csfs = new CellStyleFormats();
-            var cf = new CellFormat
+            var cellStyleFormats = new CellStyleFormats();
+            var cellFormat = new CellFormat
             {
                 NumberFormatId = 0,
                 FontId = 0,
                 FillId = 0,
                 BorderId = 0
             };
-            csfs.Append(cf);
-            csfs.Count = (uint)csfs.ChildElements.Count;
+            cellStyleFormats.Append(cellFormat);
+            cellStyleFormats.Count = (uint)cellStyleFormats.ChildElements.Count;
 
 
-            var cfs = new CellFormats();
+            var cellFormats = new CellFormats();
 
-            cf = new CellFormat
+            cellFormat = new CellFormat
             {
                 NumberFormatId = 0,
                 FontId = 0,
@@ -196,21 +207,21 @@ namespace Practical.OpenXml
                 BorderId = 0,
                 FormatId = 0
             };
-            cfs.Append(cf);
+            cellFormats.Append(cellFormat);
 
-            var nfs = new NumberingFormats();
+            var numberingFormats = new NumberingFormats();
 
-            nfs.Count = (uint)nfs.ChildElements.Count;
-            cfs.Count = (uint)cfs.ChildElements.Count;
+            numberingFormats.Count = (uint)numberingFormats.ChildElements.Count;
+            cellFormats.Count = (uint)cellFormats.ChildElements.Count;
 
-            ss.Append(nfs);
-            ss.Append(fts);
-            ss.Append(fills);
-            ss.Append(borders);
-            ss.Append(csfs);
-            ss.Append(cfs);
+            stylesheet.Append(numberingFormats);
+            stylesheet.Append(fonts);
+            stylesheet.Append(fills);
+            stylesheet.Append(borders);
+            stylesheet.Append(cellStyleFormats);
+            stylesheet.Append(cellFormats);
 
-            var css = new CellStyles(
+            var cellStyles = new CellStyles(
                 new CellStyle()
                 {
                     Name = "Normal",
@@ -219,28 +230,27 @@ namespace Practical.OpenXml
                 }
                 );
 
-            css.Count = (uint)css.ChildElements.Count;
-            ss.Append(css);
+            cellStyles.Count = (uint)cellStyles.ChildElements.Count;
+            stylesheet.Append(cellStyles);
 
-            var dfs = new DifferentialFormats
+            var differentialFormats = new DifferentialFormats
             {
                 Count = 0
             };
-            ss.Append(dfs);
+            stylesheet.Append(differentialFormats);
 
-            var tss = new TableStyles
+            var tableStyles = new TableStyles
             {
                 Count = 0,
                 DefaultTableStyle = "TableStyleMedium9",
                 DefaultPivotStyle = "PivotStyleLight16"
             };
-            ss.Append(tss);
-            return ss;
+            stylesheet.Append(tableStyles);
+            return stylesheet;
         }
 
         private static void SaveCustomStylesheet(WorkbookPart workbookPart)
         {
-
             //get a copy of the default excel style sheet then add additional styles to it
             var stylesheet = CreateDefaultStylesheet();
 
@@ -258,24 +268,31 @@ namespace Practical.OpenXml
             fills.Count = (uint)fills.ChildElements.Count;
 
             // *************************** numbering formats ***********************
-            var nfs = stylesheet.NumberingFormats;
+            var numberingFormats = stylesheet.NumberingFormats;
             //number less than 164 is reserved by excel for default formats
             uint iExcelIndex = 165;
-            var nf = new NumberingFormat
+            var dateTimeFormat = new NumberingFormat
             {
                 NumberFormatId = iExcelIndex++,
-                FormatCode = @"[$-409]m/d/yy\ h:mm\ AM/PM;@"
+                FormatCode = @"[$-409]m/d/yyyy\ h:mm\ AM/PM;@"
             };
-            nfs.Append(nf);
+            numberingFormats.Append(dateTimeFormat);
 
-            nfs.Count = (uint)nfs.ChildElements.Count;
+            var decimalFormat = new NumberingFormat
+            {
+                NumberFormatId = iExcelIndex++,
+                FormatCode = @"#,##0.00"
+            };
+            numberingFormats.Append(decimalFormat);
+
+            numberingFormats.Count = (uint)numberingFormats.ChildElements.Count;
 
             //************************** cell formats ***********************************
-            var cfs = stylesheet.CellFormats; //this should already contain a default StyleIndex of 0
+            var cellFormats = stylesheet.CellFormats; //this should already contain a default StyleIndex of 0
 
-            var cf = new CellFormat
+            var dateTimeCellFormat = new CellFormat
             {
-                NumberFormatId = nf.NumberFormatId,
+                NumberFormatId = dateTimeFormat.NumberFormatId,
                 FontId = 0,
                 FillId = 0,
                 BorderId = 0,
@@ -283,9 +300,21 @@ namespace Practical.OpenXml
                 ApplyNumberFormat = true
             };
             // Date time format is defined as StyleIndex = 1
-            cfs.Append(cf);
+            cellFormats.Append(dateTimeCellFormat);
 
-            cf = new CellFormat
+            var decimalCellFormat = new CellFormat
+            {
+                NumberFormatId = decimalFormat.NumberFormatId,
+                FontId = 0,
+                FillId = 0,
+                BorderId = 0,
+                FormatId = 0,
+                ApplyNumberFormat = true
+            };
+            // Number format is defined as StyleIndex = 2
+            cellFormats.Append(decimalCellFormat);
+
+            dateTimeCellFormat = new CellFormat
             {
                 NumberFormatId = 0,
                 FontId = 1,
@@ -294,11 +323,10 @@ namespace Practical.OpenXml
                 BorderId = 0,
                 FormatId = 0
             };
-            // Header format is defined as StyleINdex = 2
-            cfs.Append(cf);
+            // Header format is defined as StyleINdex = 3
+            cellFormats.Append(dateTimeCellFormat);
 
-
-            cfs.Count = (uint)cfs.ChildElements.Count;
+            cellFormats.Count = (uint)cellFormats.ChildElements.Count;
 
             var workbookStylesPart = workbookPart.AddNewPart<WorkbookStylesPart>();
             var style = workbookStylesPart.Stylesheet = stylesheet;
