@@ -19,7 +19,7 @@ namespace Practical.OpenXml
                 File.Delete(fileName);
             }
 
-            var headerList = new string[] { "Header 1", "Header 2", "Header 3", "Header 4", "Decimal Column", "DateTime Column" };
+            var headerList = new string[] { "Header 1", "Header 2", "Header 3", "Header 4", "Decimal Column", "DateTime Column", "Rotated and Centered" };
 
             var stopWatch = new Stopwatch();
 
@@ -33,6 +33,7 @@ namespace Practical.OpenXml
                 var dateTimeCellFormatIndex = 1;
                 var decimalCellFormatIndex = 2;
                 var headerCellFormatIndex = 3;
+                var rotatedAndCenteredCellFormatIndex = 4;
 
                 var workbook = workbookPart.Workbook = new Workbook();
                 var sheets = workbook.AppendChild(new Sheets());
@@ -71,10 +72,18 @@ namespace Practical.OpenXml
                     writer.WriteStartElement(new Row());
                     for (int i = 0; i < headerList.Length; i++)
                     {
-                        //header formatting attribute. This will create a <c> element with s=3 as its attribute
-                        //s stands for styleindex
-                        var attributes = new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, $"{headerCellFormatIndex}") }.ToList();
-                        writer.WriteSharedStringCellValue(headerList[i], sharedStringData, attributes);
+                        if (headerList[i] == "Rotated and Centered")
+                        {
+                            var attributes = new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, $"{rotatedAndCenteredCellFormatIndex}") }.ToList();
+                            writer.WriteSharedStringCellValue(headerList[i], sharedStringData, attributes);
+                        }
+                        else
+                        {
+                            //header formatting attribute. This will create a <c> element with s=3 as its attribute
+                            //s stands for styleindex
+                            var attributes = new OpenXmlAttribute[] { new OpenXmlAttribute("s", null, $"{headerCellFormatIndex}") }.ToList();
+                            writer.WriteSharedStringCellValue(headerList[i], sharedStringData, attributes);
+                        }
 
                     }
                     writer.WriteEndElement(); //end of Row tag
@@ -258,13 +267,15 @@ namespace Practical.OpenXml
             var fills = stylesheet.Fills;
 
             //header fills background color
-            var fill = new Fill();
-            var patternFill = new PatternFill();
-            patternFill.PatternType = PatternValues.Solid;
-            patternFill.ForegroundColor = new ForegroundColor { Rgb = HexBinaryValue.FromString("C8EEFF") };
-            //patternFill.BackgroundColor = new BackgroundColor() { Indexed = 64 };
-            fill.PatternFill = patternFill;
-            fills.AppendChild(fill);
+            fills.AppendChild(new Fill
+            {
+                PatternFill = new PatternFill
+                {
+                    PatternType = PatternValues.Solid,
+                    ForegroundColor = new ForegroundColor { Rgb = HexBinaryValue.FromString("C8EEFF") },
+                    //BackgroundColor = new BackgroundColor() { Indexed = 64 }
+                }
+            });
             fills.Count = (uint)fills.ChildElements.Count;
 
             // *************************** numbering formats ***********************
@@ -287,10 +298,11 @@ namespace Practical.OpenXml
 
             numberingFormats.Count = (uint)numberingFormats.ChildElements.Count;
 
-            //************************** cell formats ***********************************
+            //************************** begin cell formats ***********************************
             var cellFormats = stylesheet.CellFormats; //this should already contain a default StyleIndex of 0
 
-            var dateTimeCellFormat = new CellFormat
+            // Date time format is defined as StyleIndex = 1
+            cellFormats.Append(new CellFormat
             {
                 NumberFormatId = dateTimeFormat.NumberFormatId,
                 FontId = 0,
@@ -298,11 +310,11 @@ namespace Practical.OpenXml
                 BorderId = 0,
                 FormatId = 0,
                 ApplyNumberFormat = true
-            };
-            // Date time format is defined as StyleIndex = 1
-            cellFormats.Append(dateTimeCellFormat);
+            });
+            var currentCellFormatIndex = 1;
 
-            var decimalCellFormat = new CellFormat
+            // Number format is defined as StyleIndex = 2
+            cellFormats.Append(new CellFormat
             {
                 NumberFormatId = decimalFormat.NumberFormatId,
                 FontId = 0,
@@ -310,11 +322,11 @@ namespace Practical.OpenXml
                 BorderId = 0,
                 FormatId = 0,
                 ApplyNumberFormat = true
-            };
-            // Number format is defined as StyleIndex = 2
-            cellFormats.Append(decimalCellFormat);
+            });
+            currentCellFormatIndex++;
 
-            dateTimeCellFormat = new CellFormat
+            // Header format is defined as StyleIndex = 3
+            cellFormats.Append(new CellFormat
             {
                 NumberFormatId = 0,
                 FontId = 1,
@@ -322,11 +334,29 @@ namespace Practical.OpenXml
                 ApplyFill = true,
                 BorderId = 0,
                 FormatId = 0
-            };
-            // Header format is defined as StyleINdex = 3
-            cellFormats.Append(dateTimeCellFormat);
+            });
+            currentCellFormatIndex++;
+
+            // Rotated and centered header is defined as StyleIndex = 4
+            cellFormats.Append(new CellFormat
+            {
+                NumberFormatId = 0,
+                FontId = 1,
+                FillId = 2,
+                ApplyFill = true,
+                BorderId = 0,
+                FormatId = 0,
+                Alignment = new Alignment
+                {
+                    TextRotation = (UInt32Value)90,
+                    Horizontal = HorizontalAlignmentValues.Center
+                },
+            });
+            currentCellFormatIndex++;
 
             cellFormats.Count = (uint)cellFormats.ChildElements.Count;
+
+            //************************** end cell formats ***********************************
 
             var workbookStylesPart = workbookPart.AddNewPart<WorkbookStylesPart>();
             var style = workbookStylesPart.Stylesheet = stylesheet;
