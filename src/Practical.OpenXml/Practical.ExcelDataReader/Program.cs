@@ -43,7 +43,7 @@ namespace Practical.ExcelDataReader
 
             do
             {
-                if (reader.VisibleState == "hidden")
+                if (reader.VisibleState != "visible") // visible, hidden, veryhidden
                 {
                     continue;
                 }
@@ -81,7 +81,7 @@ namespace Practical.ExcelDataReader
 
             do
             {
-                if (reader.VisibleState == "hidden")
+                if (reader.VisibleState != "visible") // visible, hidden, veryhidden
                 {
                     continue;
                 }
@@ -200,7 +200,7 @@ namespace Practical.ExcelDataReader
 
             do
             {
-                if (reader.VisibleState == "hidden")
+                if (reader.VisibleState != "visible") // visible, hidden, veryhidden
                 {
                     continue;
                 }
