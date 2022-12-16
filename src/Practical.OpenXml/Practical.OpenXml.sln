@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practical.OpenXml", "Practical.OpenXml\Practical.OpenXml.csproj", "{1667F260-EF7B-40AA-B9CF-AEE1CB9AC476}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practical.ExcelDataReader", "Practical.ExcelDataReader\Practical.ExcelDataReader.csproj", "{7D223908-CFBC-4E35-BCA1-6708A24C043B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practical.ExcelDataReader", "Practical.ExcelDataReader\Practical.ExcelDataReader.csproj", "{7D223908-CFBC-4E35-BCA1-6708A24C043B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practical.EPPlus", "Practical.EPPlus\Practical.EPPlus.csproj", "{C12D4EF2-7DD3-46F9-980F-B4D1837AAFCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7D223908-CFBC-4E35-BCA1-6708A24C043B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D223908-CFBC-4E35-BCA1-6708A24C043B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D223908-CFBC-4E35-BCA1-6708A24C043B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C12D4EF2-7DD3-46F9-980F-B4D1837AAFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C12D4EF2-7DD3-46F9-980F-B4D1837AAFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C12D4EF2-7DD3-46F9-980F-B4D1837AAFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C12D4EF2-7DD3-46F9-980F-B4D1837AAFCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
