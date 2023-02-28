@@ -43,7 +43,7 @@ namespace Practical.ExcelDataReader
 
             do
             {
-                if (reader.VisibleState != "visible") // visible, hidden, veryhidden
+                if (reader.VisibleState != VisibleStateConstants.Visible)
                 {
                     continue;
                 }
@@ -81,7 +81,7 @@ namespace Practical.ExcelDataReader
 
             do
             {
-                if (reader.VisibleState != "visible") // visible, hidden, veryhidden
+                if (reader.VisibleState != VisibleStateConstants.Visible)
                 {
                     continue;
                 }
@@ -103,7 +103,7 @@ namespace Practical.ExcelDataReader
                             ColumnIndex = cell.ColumnIndex,
                             RowIndex = cell.RowIndex,
                             SheetName = reader.Name,
-                            Value = reader.GetValue(cell.ColumnIndex)?.ToString(),
+                            Value = cell.ColumnIndex < reader.FieldCount ? reader.GetValue(cell.ColumnIndex)?.ToString() : null,
                         });
                     }
 
@@ -200,7 +200,7 @@ namespace Practical.ExcelDataReader
 
             do
             {
-                if (reader.VisibleState != "visible") // visible, hidden, veryhidden
+                if (reader.VisibleState != VisibleStateConstants.Visible)
                 {
                     continue;
                 }
