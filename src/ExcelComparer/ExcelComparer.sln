@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.ClosedXML", "ExcelExtractor.ClosedXML\ExcelExtractor.ClosedXML.csproj", "{2A0891FF-103A-47A0-934A-3DD33142F604}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.EPPlus", "ExcelExtractor.EPPlus\ExcelExtractor.EPPlus.csproj", "{2FCF5020-5D92-4F9A-9088-2EF2E5A29A36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelComparer.Abstractions", "ExcelComparer.Abstractions\ExcelComparer.Abstractions.csproj", "{8BA6A823-36DB-4A07-BB7F-0FCBAED8EC9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.ClosedXML.Demo", "ExcelExtractor.ClosedXML.Demo\ExcelExtractor.ClosedXML.Demo.csproj", "{39E53B3B-F20C-4B12-8D5A-4F07605B0433}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.EPPlus.Demo", "ExcelExtractor.EPPlus.Demo\ExcelExtractor.EPPlus.Demo.csproj", "{A6D7E758-19AD-44CA-BEDC-0F27E8243E17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A0891FF-103A-47A0-934A-3DD33142F604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A0891FF-103A-47A0-934A-3DD33142F604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A0891FF-103A-47A0-934A-3DD33142F604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A0891FF-103A-47A0-934A-3DD33142F604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCF5020-5D92-4F9A-9088-2EF2E5A29A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCF5020-5D92-4F9A-9088-2EF2E5A29A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCF5020-5D92-4F9A-9088-2EF2E5A29A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCF5020-5D92-4F9A-9088-2EF2E5A29A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BA6A823-36DB-4A07-BB7F-0FCBAED8EC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA6A823-36DB-4A07-BB7F-0FCBAED8EC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA6A823-36DB-4A07-BB7F-0FCBAED8EC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA6A823-36DB-4A07-BB7F-0FCBAED8EC9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39E53B3B-F20C-4B12-8D5A-4F07605B0433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39E53B3B-F20C-4B12-8D5A-4F07605B0433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39E53B3B-F20C-4B12-8D5A-4F07605B0433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39E53B3B-F20C-4B12-8D5A-4F07605B0433}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D7E758-19AD-44CA-BEDC-0F27E8243E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D7E758-19AD-44CA-BEDC-0F27E8243E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D7E758-19AD-44CA-BEDC-0F27E8243E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D7E758-19AD-44CA-BEDC-0F27E8243E17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
