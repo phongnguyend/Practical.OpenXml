@@ -1,6 +1,4 @@
-﻿using ExcelComparer.Abstractions;
-using ExcelExtractor.ClosedXML;
-using System.Text.Json;
+﻿using ExcelExtractor.ClosedXML;
 
 
 var fileName = "C:\\Users\\Phong.NguyenDoan\\Downloads\\xxx.xlsx";
@@ -18,6 +16,4 @@ foreach (var worksheet in workbook.Worksheets)
     }
 }
 
-var json = JsonSerializer.Serialize(workbook, new JsonSerializerOptions { WriteIndented = true });
-
-File.WriteAllText("output.json", json);
+File.WriteAllText("output.json", workbook.ToJson());

@@ -1,8 +1,18 @@
-﻿namespace ExcelComparer.Abstractions;
+﻿using System.Text.Json;
+
+namespace ExcelComparer.Abstractions;
 
 public class Workbook
 {
     public List<Worksheet> Worksheets { get; set; }
+
+    public string ToJson()
+    {
+        return JsonSerializer.Serialize(this, new JsonSerializerOptions
+        {
+            WriteIndented = true
+        });
+    }
 }
 
 public class Worksheet
