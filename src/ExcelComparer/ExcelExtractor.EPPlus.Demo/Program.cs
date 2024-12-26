@@ -1,6 +1,6 @@
 ﻿using ExcelExtractor.EPPlus;
 
-var fileName = "C:\\Users\\Phong.NguyenDoan\\Downloads\\xxx.xlsx";
+var fileName = "C:\\Users\\Phong.NguyenDoan\\Downloads\\Temp\\xxx.xlsx";
 
 using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
 var extractor = new EPPlusExcelExtractor();
