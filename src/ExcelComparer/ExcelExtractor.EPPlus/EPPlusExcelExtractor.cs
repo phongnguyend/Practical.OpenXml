@@ -1,4 +1,4 @@
-﻿using ExcelComparer.Abstractions;
+﻿using ExcelExtractor.Abstractions;
 using OfficeOpenXml;
 
 namespace ExcelExtractor.EPPlus;

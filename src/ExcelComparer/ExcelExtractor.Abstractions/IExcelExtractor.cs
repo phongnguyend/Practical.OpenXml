@@ -1,4 +1,4 @@
-﻿namespace ExcelComparer.Abstractions;
+﻿namespace ExcelExtractor.Abstractions;
 
 public interface IExcelExtractor
 {

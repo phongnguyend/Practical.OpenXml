@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace ExcelComparer.Abstractions;
+namespace ExcelExtractor.Abstractions;
 
 public static class ExcelHelper
 {

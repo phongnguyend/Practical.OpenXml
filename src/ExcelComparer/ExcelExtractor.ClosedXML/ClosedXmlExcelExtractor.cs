@@ -1,5 +1,5 @@
 ﻿using ClosedXML.Excel;
-using ExcelComparer.Abstractions;
+using ExcelExtractor.Abstractions;
 
 namespace ExcelExtractor.ClosedXML;
 

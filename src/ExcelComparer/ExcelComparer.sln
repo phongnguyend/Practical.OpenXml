@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.ClosedXML", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.EPPlus", "ExcelExtractor.EPPlus\ExcelExtractor.EPPlus.csproj", "{2FCF5020-5D92-4F9A-9088-2EF2E5A29A36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelComparer.Abstractions", "ExcelComparer.Abstractions\ExcelComparer.Abstractions.csproj", "{8BA6A823-36DB-4A07-BB7F-0FCBAED8EC9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.Abstractions", "ExcelExtractor.Abstractions\ExcelExtractor.Abstractions.csproj", "{8BA6A823-36DB-4A07-BB7F-0FCBAED8EC9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.ClosedXML.Demo", "ExcelExtractor.ClosedXML.Demo\ExcelExtractor.ClosedXML.Demo.csproj", "{39E53B3B-F20C-4B12-8D5A-4F07605B0433}"
 EndProject

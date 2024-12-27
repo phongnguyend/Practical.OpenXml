@@ -1,11 +1,19 @@
 using ApprovalTests.Reporters;
 using ApprovalTests;
+using Xunit.Abstractions;
 
 namespace ExcelExtractor.EPPlus.Tests;
 
 [UseReporter(typeof(VisualStudioCodeReporter))]
 public class ApprovalTests
 {
+    private readonly ITestOutputHelper _output;
+
+    public ApprovalTests(ITestOutputHelper output)
+    {
+        _output = output;
+    }
+
     [Fact]
     public void ExtractFile()
     {

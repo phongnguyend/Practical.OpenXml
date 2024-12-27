@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExcelComparer.Abstractions\ExcelComparer.Abstractions.csproj" />
+    <ProjectReference Include="..\ExcelExtractor.Abstractions\ExcelExtractor.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
