@@ -31,12 +31,12 @@ public static class ExcelHelper
 
     public static int ConvertColumnNameToIndex(string columnName)
     {
-        return _columnNames[columnName] - 1;
+        return _columnNames[columnName];
     }
 
     public static string ConvertColumnIndexToName(int columnIndex)
     {
-        return _columnIndexs[columnIndex + 1];
+        return _columnIndexs[columnIndex];
     }
 
     public static (int Row, int Column) ConvertAddressToIndex(string address)

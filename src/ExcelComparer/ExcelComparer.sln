@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.ClosedXML.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.EPPlus.Tests", "ExcelExtractor.EPPlus.Tests\ExcelExtractor.EPPlus.Tests.csproj", "{436D4503-04D0-409B-9CFD-7959C8B0D032}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.OpenXml", "ExcelExtractor.OpenXml\ExcelExtractor.OpenXml.csproj", "{12616C97-CED8-4E2F-B395-77904B379929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelExtractor.OpenXml.Demo", "ExcelExtractor.OpenXml.Demo\ExcelExtractor.OpenXml.Demo.csproj", "{1F0E1E5D-C1FB-4D9C-8427-67AB8233116D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{436D4503-04D0-409B-9CFD-7959C8B0D032}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{436D4503-04D0-409B-9CFD-7959C8B0D032}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{436D4503-04D0-409B-9CFD-7959C8B0D032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12616C97-CED8-4E2F-B395-77904B379929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12616C97-CED8-4E2F-B395-77904B379929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12616C97-CED8-4E2F-B395-77904B379929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12616C97-CED8-4E2F-B395-77904B379929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0E1E5D-C1FB-4D9C-8427-67AB8233116D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0E1E5D-C1FB-4D9C-8427-67AB8233116D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0E1E5D-C1FB-4D9C-8427-67AB8233116D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0E1E5D-C1FB-4D9C-8427-67AB8233116D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
