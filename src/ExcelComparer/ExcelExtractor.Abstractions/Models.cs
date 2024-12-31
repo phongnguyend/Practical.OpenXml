@@ -69,7 +69,7 @@ public class Color
 {
     public string Theme { get; set; }
 
-    public decimal Tint { get; set; }
+    public decimal? Tint { get; set; }
 
     public int? Indexed { get; set; }
 

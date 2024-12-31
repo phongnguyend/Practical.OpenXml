@@ -53,52 +53,7 @@ public class OpenXmlExtractor : IExcelExtractor
                         Column = column,
                         Value = cell.GetText(spreadsheetDocument),
                         //Merged = cell.IsMerged(),
-                        //Style = new Style
-                        //{
-                        //    Font = new Font
-                        //    {
-                        //        Color = cell.Style.Font.FontColor.GetColor(),
-                        //        Size = cell.Style.Font.FontSize,
-                        //        Bold = cell.Style.Font.Bold
-                        //    },
-                        //    Fill = new Fill
-                        //    {
-                        //        PatternType = cell.Style.Fill.PatternType.ToString(),
-                        //        BackgroundColor = cell.Style.Fill.BackgroundColor.GetColor()
-                        //    },
-                        //    Alignment = new Alignment
-                        //    {
-                        //        Horizontal = cell.Style.Alignment.Horizontal.ToString(),
-                        //        Vertical = cell.Style.Alignment.Vertical.ToString()
-                        //    },
-                        //    Border = new Border
-                        //    {
-                        //        Top = new BorderItem
-                        //        {
-                        //            Color = cell.Style.Border.TopBorderColor.GetColor(),
-                        //            Style = cell.Style.Border.TopBorder.ToString()
-                        //        },
-                        //        Left = new BorderItem
-                        //        {
-                        //            Color = cell.Style.Border.LeftBorderColor.GetColor(),
-                        //            Style = cell.Style.Border.LeftBorder.ToString()
-                        //        },
-                        //        Bottom = new BorderItem
-                        //        {
-                        //            Color = cell.Style.Border.BottomBorderColor.GetColor(),
-                        //            Style = cell.Style.Border.BottomBorder.ToString()
-                        //        },
-                        //        Right = new BorderItem
-                        //        {
-                        //            Color = cell.Style.Border.RightBorderColor.GetColor(),
-                        //            Style = cell.Style.Border.RightBorder.ToString()
-                        //        }
-                        //    },
-                        //    Numberformat = new Numberformat
-                        //    {
-                        //        Format = cell.Style.NumberFormat.Format
-                        //    }
-                        //}
+                        Style = cell.GetStyle(spreadsheetDocument)
                     };
 
                     cells.Add(myCell);
