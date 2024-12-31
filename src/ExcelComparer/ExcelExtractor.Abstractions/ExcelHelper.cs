@@ -39,11 +39,23 @@ public static class ExcelHelper
         return _columnIndexs[columnIndex];
     }
 
-    public static (int Row, int Column) ConvertAddressToIndex(string address)
+    public static (int Row, int Column) ParseAddress(string address)
     {
         var match = Regex.Match(address, @"(?<column>[A-Z]+)(?<row>\d+)");
         var column = ConvertColumnNameToIndex(match.Groups["column"].Value);
         var row = int.Parse(match.Groups["row"].Value);
         return (row, column);
+    }
+
+    public static (int FromRow, int FromColumn, int ToRow, int ToColumn) ParseRange(string range)
+    {
+        var splits = range.Split(':');
+        string fromAddress = splits[0];
+        string toAddress = splits[1];
+
+        var from = ParseAddress(fromAddress);
+        var to = ParseAddress(toAddress);
+
+        return (from.Row, from.Column, to.Row, to.Column);
     }
 }

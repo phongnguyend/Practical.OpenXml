@@ -22,6 +22,30 @@ public class Worksheet
     public List<Cell> Cells { get; set; }
 }
 
+public class MergeCell
+{
+    public int FromRow { get; set; }
+
+    public int ToRow { get; set; }
+
+    public int FromColumn { get; set; }
+
+    public int ToColumn { get; set; }
+
+    public string Range
+    {
+        get
+        {
+            return $"{ExcelHelper.ConvertColumnIndexToName(FromColumn)}{FromRow}:{ExcelHelper.ConvertColumnIndexToName(ToColumn)}{ToRow}";
+        }
+    }
+
+    public bool Contains(int row, int column)
+    {
+        return row >= FromRow && row <= ToRow && column >= FromColumn && column <= ToColumn;
+    }
+}
+
 public class Cell
 {
     public int Row { get; set; }

@@ -66,22 +66,22 @@ public static class Extentions
                 Top = new Abstractions.BorderItem
                 {
                     Color = border.TopBorder.Color.GetColor(document),
-                    Style = FormatBorderStyle(border.TopBorder.Style.ToString())
+                    Style = FormatBorderStyle(border.TopBorder.Style?.ToString())
                 },
                 Left = new Abstractions.BorderItem
                 {
                     Color = border.LeftBorder.Color.GetColor(document),
-                    Style = FormatBorderStyle(border.LeftBorder.Style.ToString())
+                    Style = FormatBorderStyle(border.LeftBorder.Style?.ToString())
                 },
                 Bottom = new Abstractions.BorderItem
                 {
                     Color = border.BottomBorder.Color.GetColor(document),
-                    Style = FormatBorderStyle(border.BottomBorder.Style.ToString())
+                    Style = FormatBorderStyle(border.BottomBorder.Style?.ToString())
                 },
                 Right = new Abstractions.BorderItem
                 {
                     Color = border.RightBorder.Color.GetColor(document),
-                    Style = FormatBorderStyle(border.RightBorder.Style.ToString())
+                    Style = FormatBorderStyle(border.RightBorder.Style?.ToString())
                 }
             },
             Numberformat = new Abstractions.Numberformat
@@ -141,6 +141,9 @@ public static class Extentions
 
     private static string FormatBorderStyle(this string style)
     {
+        if(string.IsNullOrEmpty(style))
+            return style;
+
         return Enum.Parse(typeof(BorderStyle), style, ignoreCase: true).ToString();
     }
 }
