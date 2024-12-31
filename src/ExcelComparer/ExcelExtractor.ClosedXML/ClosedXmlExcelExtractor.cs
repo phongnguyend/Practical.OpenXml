@@ -78,7 +78,7 @@ public class ClosedXmlExcelExtractor : IExcelExtractor
                             },
                             Numberformat = new Numberformat
                             {
-                                Format = cell.Style.NumberFormat.Format
+                                Format = cell.Style.NumberFormat.Format.NullIfEmpty()
                             }
                         }
                     };

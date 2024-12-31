@@ -39,10 +39,9 @@ public static class Extentions
 
         var border = (Border)stylesheet.Borders.ElementAt(int.Parse(style.BorderId));
 
-        if (cell.CellReference == "B21")
-        {
+        var format = (CellFormat)stylesheet.CellFormats.ElementAt(int.Parse(style.FormatId));
 
-        }
+        var numberingFormat = style.ApplyNumberFormat != null ? (NumberingFormat)stylesheet.NumberingFormats?.ElementAt(int.Parse(format.NumberFormatId)) : null;
 
         var rs = new Abstractions.Style
         {
@@ -85,10 +84,10 @@ public static class Extentions
                     Style = FormatBorderStyle(border.RightBorder.Style.ToString())
                 }
             },
-            //Numberformat = new Numberformat
-            //{
-            //    Format = cell.Style.NumberFormat.Format
-            //}
+            Numberformat = new Abstractions.Numberformat
+            {
+                Format = numberingFormat?.FormatCode
+            }
         };
 
         return rs;

@@ -9,10 +9,10 @@ public static class Extentions
     {
         var colorModel = new Color
         {
-            Theme = color.Theme.ToString(),
-            Indexed = color.Indexed < 0 ? null : color.Indexed,
-            Rgb = color.Rgb,
-            Tint = color.Tint
+            Theme = color.Theme.ToString().NullIfEmpty(),
+            Indexed = color.Indexed < 0 ? null : color.Indexed.NullIfZero(),
+            Rgb = color.Rgb.NullIfEmpty(),
+            Tint = color.Tint.NullIfZero()
         };
 
         return colorModel;
