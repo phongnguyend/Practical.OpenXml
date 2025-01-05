@@ -155,7 +155,7 @@ namespace Practical.ExcelDataReader
 
                 headers.ForEach(h =>
                 {
-                    var mergeCell = mergeCells != null ? mergeCells.FirstOrDefault(c => h.RowIndex >= c.FromRow && h.RowIndex <= c.ToRow && h.ColumnIndex >= c.FromColumn && h.ColumnIndex <= c.ToRow) : null;
+                    var mergeCell = mergeCells != null ? mergeCells.FirstOrDefault(c => h.RowIndex >= c.FromRow && h.RowIndex <= c.ToRow && h.ColumnIndex >= c.FromColumn && h.ColumnIndex <= c.ToColumn) : null;
                     if (mergeCell != null)
                     {
                         h.Value = mergedHeaders.First(x => x.RowIndex == mergeCell.FromRow && x.ColumnIndex == mergeCell.FromColumn).Value;
