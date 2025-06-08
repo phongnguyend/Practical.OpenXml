@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36109.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelFormula.ClosedXml", "ExcelFormula.ClosedXml\ExcelFormula.ClosedXml.csproj", "{220638D5-7F5A-4285-A7A6-86585FFAA53D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{089100B1-113F-4E66-888A-E83F3999EAFD}"
+	ProjectSection(SolutionItems) = preProject
+		Template.xlsx = Template.xlsx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelFormula.EPPlus", "ExcelFormula.EPPlus\ExcelFormula.EPPlus.csproj", "{E7336057-FFD1-4B08-B020-FEA704ACF687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{220638D5-7F5A-4285-A7A6-86585FFAA53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{220638D5-7F5A-4285-A7A6-86585FFAA53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{220638D5-7F5A-4285-A7A6-86585FFAA53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{220638D5-7F5A-4285-A7A6-86585FFAA53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7336057-FFD1-4B08-B020-FEA704ACF687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7336057-FFD1-4B08-B020-FEA704ACF687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7336057-FFD1-4B08-B020-FEA704ACF687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7336057-FFD1-4B08-B020-FEA704ACF687}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A15F8D1-BFDD-42D9-9B72-E706CC7148F3}
+	EndGlobalSection
+EndGlobal
